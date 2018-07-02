@@ -22,7 +22,7 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 
 //const port = parseInt(process.argv[2]);
-const port = "9002";
+const port = process.env.PORT || 9002;
 if (port) {
   app.listen(port);
 }
