@@ -1,5 +1,5 @@
 swagger: '2.0'
-host: test-host
+host: host: https://open-api-user.herokuapp.com
 basePath: /v3
 info:
   title: express-openapi sample project

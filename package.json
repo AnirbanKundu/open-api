@@ -19,8 +19,7 @@
   ],
   "author": "Anirban Kundu",
   "license": "MIT",
-  "bugs": {
-  },
+  "bugs": {},
   "homepage": "http://anirban.kundu.com",
   "devDependencies": {
     "bluebird": "^3.5.1",
