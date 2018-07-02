@@ -1,0 +1,40 @@
+{
+  "name": "Open-API-TEST",
+  "version": "0.0.0",
+  "description": "Various packages to build OpenAPI APIs in node",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "combine-coverage": "istanbul-combine packages/*/coverage/coverage.json",
+    "coveralls": "cat ./coverage/lcov.info | coveralls -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "openapi",
+    "tools"
+  ],
+  "author": "Anirban Kundu",
+  "license": "MIT",
+  "bugs": {
+  },
+  "homepage": "http://anirban.kundu.com",
+  "devDependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.14.2",
+    "chai": "^4.1.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "glob": "^7.1.2",
+    "istanbul": "^0.4.1",
+    "mocha": "^5.1.1",
+    "supertest": "^3.0.0",
+    "coveralls": "^3.0.1",
+    "istanbul-combine": "^0.3.0",
+    "typescript": "^2.9.2",
+    "express-openapi": "^1.9.0"
+  }
+}
