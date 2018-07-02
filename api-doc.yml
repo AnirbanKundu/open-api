@@ -2,7 +2,7 @@ swagger: '2.0'
 host: open-api-user.herokuapp.com
 basePath: /v3
 info:
-  title: express-openapi sample project by AK
+  title: express-openapi sample project by AK - Location is San Ramon
   version: '3.0.0'
 definitions:
   Error:
