@@ -1,0 +1,169 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "3.0.0",
+    "title" : "express-openapi sample project by AK"
+  },
+  "host" : "open-api-user.herokuapp.com",
+  "basePath" : "/v3",
+  "tags" : [ {
+    "name" : "users",
+    "description" : "Everything users"
+  } ],
+  "paths" : {
+    "/users" : {
+      "post" : {
+        "tags" : [ "users", "creating" ],
+        "description" : "Create a new user.",
+        "operationId" : "createUser",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Unexpected error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "POST",
+          "uri" : "https://open-api-user.herokuapp.com/v3/users",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      },
+      "delete" : {
+        "tags" : [ "users" ],
+        "description" : "Delete users.",
+        "operationId" : "deleteUsers",
+        "parameters" : [ ],
+        "responses" : {
+          "204" : {
+            "description" : "Users were successfully deleted."
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "DELETE",
+          "uri" : "https://open-api-user.herokuapp.com/v3/users",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/users/{id}" : {
+      "get" : {
+        "tags" : [ "users", "fooey" ],
+        "description" : "Retrieve a user.",
+        "operationId" : "getUser",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Fred's age.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "description" : "The name of this person.  It may only be \"fred\".",
+          "required" : false,
+          "type" : "string",
+          "pattern" : "^fred$"
+        }, {
+          "name" : "age",
+          "in" : "query",
+          "description" : "Fred's age.",
+          "required" : false,
+          "type" : "integer",
+          "default" : 80
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Requested user",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "uri" : "https://open-api-user.herokuapp.com/v3/users/{id}",
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.id"
+          },
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/apiDocs" : {
+      "get" : {
+        "description" : "Returns the requested apiDoc",
+        "operationId" : "getApiDoc",
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "query",
+          "description" : "The type of apiDoc to return.",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "apiDoc", "operationDoc" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The requested apiDoc.",
+            "schema" : {
+              "type" : "object",
+              "properties" : { }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "uri" : "https://open-api-user.herokuapp.com/v3/apiDocs",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Error" : {
+      "type" : "object"
+    },
+    "User" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "friends" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/User"
+          }
+        }
+      }
+    }
+  },
+  "x-aws-api-id" : "27mg0lfx5a"
+}
